@@ -158,7 +158,7 @@ set shiftwidth=4        " How many columns of whitespace a “level of indentati
 set expandtab           " Use spaces when tabbing
 
 if !has('nvim')
-    set termwinsize=20x0    " Set terminal size
+    set termwinsize=12x0    " Set terminal size
 endif
 
 " ------------------------------------------------------------
