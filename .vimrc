@@ -147,6 +147,7 @@ let g:ycm_echo_current_diagnostic = 1           " Echo line's diagnostic that cu
 " ------------------------------------------------------------
 
 set nu                  " Enable line numbers
+set relativenumber      " Enable reative number
 syntax on               " Enable synax highlighting
 set incsearch           " Enable incremental search
 set hlsearch            " Enable highlight search
