@@ -1,4 +1,4 @@
-" ------------------------------------------------------------
+"------------------------------------------------------------
 " PLUGINS
 " ------------------------------------------------------------
 
@@ -36,9 +36,6 @@ filetype plugin indent on
 " ------------------------------------------------------------
 " THEME CONFIGURATION
 " ------------------------------------------------------------
-let g:edge_style = 'aura'
-let g:edge_enable_italic = 0
-let g:edge_disable_italic_comment = 1
 
 if has('termguicolors')
     set termguicolors
@@ -125,7 +122,7 @@ let g:disable_protodef_sorting = 1
 let g:ycm_key_list_stop_completion = ['<C-x>']
 
 " Set filetypes where YCM will be turned on
-let g:ycm_filetype_whitelist = { 'cpp':1, 'h':2, 'hpp':3, 'c':4, 'cxx':5 }
+let g:ycm_filetype_whitelist = { 'cpp':1, 'h':2, 'hpp':3, 'c':4, 'cxx':5, 'js': 6, 'ts': 7 }
 
 " Close preview window after completing the insertion
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -160,7 +157,7 @@ set shiftwidth=4        " How many columns of whitespace a “level of indentati
 set expandtab           " Use spaces when tabbing
 
 if !has('nvim')
-    set termwinsize=12x0    " Set terminal size
+    set termwinsize=20x0    " Set terminal size
 endif
 
 " ------------------------------------------------------------
@@ -211,26 +208,16 @@ set signcolumn=yes
 nnoremap    <C-m>m    :Copen<CR> <bar> G
 
 " Build debug and release targets
-nnoremap    <C-m>bd   :Dispatch! make -C build/Debug<CR>
-nnoremap    <C-m>br   :Dispatch! make -C build/Release<CR>
+nnoremap    <C-m>b   :Dispatch! make -C ../build<CR>
 
 " Functions
 " ---------------------------------------
 
 " Map <F6> to the Debug executable with passed filename
-function SetBinaryDebug(filename)
-    let bpath = getcwd() . "/bin/Debug/" . a:filename
+function BindExecute(filename)
+    let bpath = getcwd() . "/../bin/" . a:filename
     execute "nnoremap <F6> :Dispatch "
             \ bpath
             \ . " <CR> <bar> :Copen<CR>"
     echo "<F6> will run: " . bpath
-endfunction
-
-" Map <F7> to the Release executable with passed filename
-function SetBinaryRelease(filename)
-    let bpath = getcwd() . "/bin/Release/" . a:filename 
-    execute "nnoremap <F7> :Dispatch "
-                \ bpath 
-                \ . "<CR> <bar> :Copen<CR>"
-    echo "<F7> will run: " . bpath
 endfunction
